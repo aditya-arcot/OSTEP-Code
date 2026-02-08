@@ -1,6 +1,6 @@
 #include <assert.h>
-#include <stdio.h>
 #include <pthread.h>
+#include <stdio.h>
 
 typedef struct {
     int a;
@@ -8,18 +8,18 @@ typedef struct {
 } myarg_t;
 
 void *mythread(void *arg) {
-    myarg_t *args = (myarg_t *) arg;
+    myarg_t *args = (myarg_t *)arg;
     printf("%d %d\n", args->a, args->b);
     return NULL;
 }
 
 int main(int argc, char *argv[]) {
     pthread_t p;
-    myarg_t args = { 10, 20 };
+    myarg_t args = {10, 20};
 
     int rc = pthread_create(&p, NULL, mythread, &args);
     assert(rc == 0);
-    (void) pthread_join(p, NULL);
+    (void)pthread_join(p, NULL);
     printf("done\n");
     return 0;
 }
